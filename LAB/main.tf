@@ -8,15 +8,17 @@ module "storageaccount" {
     #count = 3
   source = "./storageaccount"
   resourcegroup_name = module.resourcegroup.rg_name_output
-  location_name = module.resourcegroup.location_output
+  location = module.resourcegroup.location_output
   storageaccount_name = "stacc"
 }
+/*
 resource "azurerm_management_lock" "storage_lock" {
   name       = "storage-lock"
   scope      = module.storageaccount.storage_id
   lock_level = "CanNotDelete"
   notes      = "Locked because it's needed by a third-party"
 }
+*/
 
 module "virtualnetwork" {
   source = "./network"
@@ -42,12 +44,15 @@ module "publicip" {
   location = module.resourcegroup.location_output
   pip_name = "demo-pip001"
 }
+
+/*
 resource "azurerm_management_lock" "pip_lock" {
   name       = "pip-lock"
   scope      = module.publicip.pip_id_output
   lock_level = "CanNotDelete"
   notes      = "Locked because it's needed by a third-party"
 }
+*/
 
 module "nsg" {
   source = "./securitygroup"
@@ -56,3 +61,12 @@ module "nsg" {
   app_subnetid = module.virtualnetwork.app_subnetid_output
   nsg_name = "demo-nsg01"
 }
+
+module "virtualmachine" {
+  source = "./virtualmachine"
+  resourcegroup_name = module.resourcegroup.rg_name_output
+  location = module.resourcegroup.location_output
+  windowsserver_name = "win-srv" 
+}
+
+

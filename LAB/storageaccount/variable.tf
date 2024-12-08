@@ -2,7 +2,7 @@ variable "storageaccount_name" {
   type = string
 }
 
-variable "location_name" {
+variable "location" {
   type = string
 }
 

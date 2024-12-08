@@ -9,7 +9,7 @@ resource "random_string" "random" {
 resource "azurerm_storage_account" "st" {
   name                     = "${var.storageaccount_name}${random_string.random.result}"
   resource_group_name      = var.resourcegroup_name
-  location                 = var.location_name
+  location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 
