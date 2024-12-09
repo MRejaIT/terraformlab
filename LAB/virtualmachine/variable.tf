@@ -10,4 +10,7 @@ variable "location" {
   type = string
 }
 
+variable "azurerm_network_interface_id" {
+  type = string
+}
 
