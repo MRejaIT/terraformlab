@@ -3,5 +3,5 @@ output "windowsserver_name_output" {
 }
 
 output "nic_id_output" {
-  value = var.azurerm_network_interface.nicdetails.id
+  value = azurerm_network_interface.nicdetails.id
 }
