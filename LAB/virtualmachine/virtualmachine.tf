@@ -6,7 +6,7 @@ resource "azurerm_windows_virtual_machine" "win-vm" {
   admin_username      = "azuser"
   admin_password      = "Asdf123456789"
   network_interface_ids = [
-    var.azurerm_network_interface.nicdetails.id,
+    var.nic_id_output.id
   ]
 
   os_disk {
@@ -20,7 +20,7 @@ resource "azurerm_windows_virtual_machine" "win-vm" {
     sku       = "2022-Datacenter"
     version   = "latest"
   }
-  depends_on = [ var.resourcegroup_name, var.azurerm_network_interface.id ]
+  depends_on = [ var.resourcegroup_name ]
 }
 
 resource "azurerm_managed_disk" "datadisk" {
