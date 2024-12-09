@@ -67,7 +67,7 @@ module "virtualmachine" {
   resourcegroup_name = module.resourcegroup.rg_name_output
   location = module.resourcegroup.location_output
   windowsserver_name = "win-srv" 
-  azurerm_network_interface_id = module.azurerm_network_interface_id_output
+  azurerm_network_interface_id = module.interfacecard.azurerm_network_interface_id_output
 }
 
 
