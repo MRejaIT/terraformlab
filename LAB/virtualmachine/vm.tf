@@ -6,7 +6,7 @@ resource "azurerm_windows_virtual_machine" "win-vm" {
   admin_username      = "azuser"
   admin_password      = "Asdf123456789"
   network_interface_ids = [
-    azurerm_network_interface.nic.id,
+    var.azurerm_network_interface.nicdetails.id,
   ]
 
   os_disk {
