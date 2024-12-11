@@ -36,7 +36,6 @@ module "networkcard" {
   nic_name = "demo-nic01"
   app_subnetid = module.virtualnetwork.app_subnetid_output
   pip_id = module.publicip.pip_id_output
-  azurerm_network_interface_id = module.virtualmachine.azurerm_network_interface_id_output
   }
 
 
@@ -64,13 +63,8 @@ module "nsg" {
   nsg_name = "demo-nsg01"
 }
 
-module "virtualmachine" {
+module "winsrv" {
   source = "./virtualmachine"
   resourcegroup_name = module.resourcegroup.rg_name_output
   location = module.resourcegroup.location_output
-  windowsserver_name = "win-srv" 
-  azurerm_network_interface_id = module.networkcard.azurerm_network_interface_id_output
 }
-
-
-
