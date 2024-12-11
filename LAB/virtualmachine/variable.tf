@@ -9,3 +9,7 @@ variable "location" {
 variable "vm_name" {
   type = string
 }
+
+variable "nic_id" {
+  type = string
+}

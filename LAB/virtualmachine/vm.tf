@@ -5,10 +5,7 @@ resource "azurerm_windows_virtual_machine" "win-vm" {
   size                = "Standard_B2als_v2"
   admin_username      = "azuser"
   admin_password      = "Asdf123456789"
-  network_interface_ids = [
-    var.ni
-  ]
-
+ network_interface_ids = [ var.nic_id]
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
