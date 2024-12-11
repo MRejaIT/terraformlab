@@ -1,4 +1,8 @@
-variable "pip_name" {
+variable "win_pip_name" {
+  type = string
+}
+
+variable "linux_pip_name" {
   type = string
 }
 
