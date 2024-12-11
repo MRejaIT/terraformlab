@@ -5,3 +5,7 @@ variable "resourcegroup_name" {
 variable "location" {
  type = string 
 }
+
+variable "vm_name" {
+  type = string
+}

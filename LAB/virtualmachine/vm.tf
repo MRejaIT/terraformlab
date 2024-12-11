@@ -1,12 +1,12 @@
 resource "azurerm_windows_virtual_machine" "win-vm" {
-  name                = "FTVM"
+  name                = var.vm_name
   resource_group_name = var.resourcegroup_name
   location            = var.location
   size                = "Standard_B2als_v2"
   admin_username      = "azuser"
   admin_password      = "Asdf123456789"
   network_interface_ids = [
-    var.azurerm_network_interface.nicdetails.id,
+    azurerm_network_interface.nicdetails.id
   ]
 
   os_disk {
