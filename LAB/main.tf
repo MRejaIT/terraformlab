@@ -63,10 +63,11 @@ module "nsg" {
   nsg_name = "demo-nsg01"
 }
 
+/*
 module "winsrv" {
   source = "./virtualmachine"
   resourcegroup_name = module.resourcegroup.rg_name_output
   location = module.resourcegroup.location_output
   vm_name = "Win-srv"
-  
 }
+*/
