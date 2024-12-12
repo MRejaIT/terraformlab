@@ -1,11 +1,11 @@
 resource "azurerm_windows_virtual_machine" "win-vm" {
-  name                = var.vm_name
+  name                = var.win_vm_name
   resource_group_name = var.resourcegroup_name
   location            = var.location
   size                = "Standard_B2als_v2"
   admin_username      = "azuser"
   admin_password      = "Asdf123456789"
- network_interface_ids = [ var.nic_id]
+ network_interface_ids = [ var.win_nic_id]
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
@@ -17,7 +17,7 @@ resource "azurerm_windows_virtual_machine" "win-vm" {
     sku       = "2022-Datacenter"
     version   = "latest"
   }
-  depends_on = [ var.resourcegroup_name, ]
+  depends_on = [ var.resourcegroup_name, var.win_nic_id ]
 }
 
 resource "azurerm_managed_disk" "datadisk" {

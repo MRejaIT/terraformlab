@@ -6,10 +6,10 @@ variable "location" {
  type = string 
 }
 
-variable "vm_name" {
+variable "win_vm_name" {
   type = string
 }
 
-variable "nic_id" {
+variable "win_nic_id" {
   type = string
 }

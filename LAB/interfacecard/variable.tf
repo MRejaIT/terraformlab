@@ -1,4 +1,8 @@
- variable "nic_name" {
+ variable "win_nic_name" {
+   type = string
+ }
+
+  variable "linux_nic_name" {
    type = string
  }
 
@@ -14,7 +18,14 @@
    type = string
  }
 
- variable "pip_id" {
+  variable "db_subnetid" {
+   type = string
+ }
+ variable "win_pip_id" {
+   type = string
+ }
+
+ variable "linux_pip_id" {
    type = string
  }
 

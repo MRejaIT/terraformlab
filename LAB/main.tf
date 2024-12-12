@@ -33,9 +33,12 @@ module "networkcard" {
   source = "./interfacecard"
   resourcegroup_name = module.resourcegroup.rg_name_output
   location = module.resourcegroup.location_output
-  nic_name = "demo-nic01"
+  win_nic_name = "win-nic01"
   app_subnetid = module.virtualnetwork.app_subnetid_output
-  pip_id = module.publicip.pip_id_output
+  linux_nic_name = "linux-001"
+  db_subnetid = module.virtualnetwork.db_subnet_output
+  win_pip_id = module.publicip.win_pip_id_output
+  linux_pip_id = module.publicip.linux_pip_id_output
   }
 
 
@@ -43,7 +46,8 @@ module "publicip" {
   source = "./puplicip"
   resourcegroup_name = module.resourcegroup.rg_name_output
   location = module.resourcegroup.location_output
-  pip_name = "demo-pip001"
+  win_pip_name = "win-pip001"
+  linux_pip_name = "linux-pip001"
 }
 
 /*
@@ -65,9 +69,17 @@ module "nsg" {
 
 
 module "winsrv" {
-  source = "./virtualmachine"
+  source = "./win_virtualmachine"
   resourcegroup_name = module.resourcegroup.rg_name_output
   location = module.resourcegroup.location_output
-  vm_name = "Win-srv"
-  nic_id = module.networkcard.nic_id_output
+  win_vm_name = "Win-srv"
+  win_nic_id = module.networkcard.win_nic_id_output
+}
+
+module "linuxsrv" {
+  source = "./Linux_vm"
+  resourcegroup_name = module.resourcegroup.rg_name_output
+  location = module.resourcegroup.location_output
+  linux_vm_name = "linux-srv"
+  linux_nic_id = module.networkcard.linux_nic_id_output
 }
